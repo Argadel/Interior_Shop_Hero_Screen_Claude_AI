@@ -1,5 +1,5 @@
 # Interior_Shop_Hero_Screen_Claude_AI
-Test_Project
+
 **Prompt:** Write a working code for one section of an interior shop website - Hero Screen. Use HTML, CSS and JavaScript.
 
 
