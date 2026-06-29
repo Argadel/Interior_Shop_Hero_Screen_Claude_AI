@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maison Lune — Interiors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #1C1C1A;
+      --fg:        #F0EBE1;
+      --sage:      #8A9E8C;
+      --rose:      #C4A99A;
+      --muted:     #6d6d6d;
+      --border:    rgba(240,235,225,0.10);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 56px;
+      mix-blend-mode: normal;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garant', serif;
+      font-weight: 300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--fg); }
+
+    .nav-cta {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--rose);
+      padding: 10px 24px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--fg); transform: translateY(-1px); }
+
+    /* ── HERO LAYOUT ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: 100px;
+    }
+
+    /* ── LEFT PANEL ── */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 100px 80px 100px;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .eyebrow-line {
+      width: 36px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    .eyebrow-text {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garant', serif;
+      font-weight: 300;
+      font-size: clamp(3.6rem, 5.5vw, 5.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      margin-bottom: 36px;
+      max-width: 670px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-body {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 670px;
+      margin-bottom: 56px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 70px;
+    }
+
+    @media screen and (max-width: 1281px) {
+      .hero-actions {
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+        margin-bottom: 56px;
+        flex-direction: column;
+      }
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--fg);
+      padding: 16px 36px;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--rose);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary svg { transition: transform 0.3s; }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    .btn-ghost {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .btn-ghost:hover { color: var(--fg); border-color: var(--fg); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      position: absolute;
+      bottom: 56px;
+      display: flex;
+      gap: 48px;
+    }
+
+    .stat-item {}
+
+    .stat-number {
+      font-family: 'Cormorant Garant', serif;
+      font-weight: 300;
+      font-size: 2rem;
+      color: var(--fg);
+      line-height: 1;
+    }
+
+    .stat-number span {
+      font-size: 0.85rem;
+      color: var(--sage);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .stat-number span#count-rooms.unique_span {
+      font-family: 'Cormorant Garant', serif;
+      font-weight: 300;
+      font-size: 2rem;
+      color: var(--fg);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: #141412;
+    }
+
+    .collage {
+      position: absolute;
+      inset: 0;
+      will-change: transform;
+      transition: transform 0.08s linear;
+    }
+
+    .collage-img {
+      position: absolute;
+      border-radius: 2px;
+      overflow: hidden;
+      background: #2a2a28;
+    }
+
+    .collage-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88) saturate(0.85);
+      transition: filter 0.4s;
+    }
+
+    .collage-img:hover img { filter: brightness(0.98) saturate(1); }
+
+    /* image positions */
+    .img-a { top: 6%; left: 8%;  width: 56%; height: 48%; }
+    .img-b { top: 4%; right: 4%; width: 32%; height: 30%; }
+    .img-c { top: 55%; left: 4%; width: 36%; height: 38%; }
+    .img-d { top: 38%; right: 2%; width: 46%; height: 54%; }
+
+    /* tag overlays */
+    .img-tag {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg);
+      background: rgba(28,28,26,0.72);
+      backdrop-filter: blur(6px);
+      padding: 6px 10px;
+      border-radius: 1px;
+    }
+
+    /* gradient overlay on right */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 18%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* vertical label */
+    .vertical-label {
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      transform-origin: center center;
+      font-size: 0.6rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 3;
+      white-space: nowrap;
+    }
+
+    /* ── SCROLL HINT ── */
+    .scroll-hint {
+      position: fixed;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 50;
+    }
+
+    .scroll-hint span {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--rose), transparent);
+      animation: scrollPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50%       { transform: scaleY(0.5); opacity: 0.4; }
+    }
+
+    /* ── PLACEHOLDER IMAGES (CSS art) ── */
+    .ph-living {
+      background: linear-gradient(135deg, #2e2c28 0%, #3d3830 40%, #4a4238 100%);
+    }
+    .ph-lamp {
+      background: linear-gradient(160deg, #28292a 0%, #35302b 60%, #3e3528 100%);
+    }
+    .ph-shelf {
+      background: linear-gradient(120deg, #2a2d2a 0%, #323630 50%, #3a3e35 100%);
+    }
+    .ph-chair {
+      background: linear-gradient(150deg, #2c2b27 0%, #3b3830 40%, #4a4540 100%);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 24px 28px; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 50vh;
+        padding-top: 80px;
+      }
+
+      .hero-left  { padding: 48px 28px 70px; }
+      .stats-bar  { bottom: 28px; left: 28px; gap: 28px; }
+      .hero-right { min-height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Maison Lune</a>
+    <ul class="nav-links">
+      <li><a href="#">Collections</a></li>
+      <li><a href="#">Rooms</a></li>
+      <li><a href="#">Designers</a></li>
+      <li><a href="#">Journal</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Book a consult</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Curated interiors since 2011</span>
+      </div>
+
+      <h1 class="hero-headline">
+        Spaces that feel like <em>yours</em> <br>from the start.
+      </h1>
+
+      <p class="hero-body">
+        We source furniture, textiles and objects that carry weight — not just aesthetic weight, but the kind that makes a room feel inhabited. No kits. No shortcuts.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">
+          Explore collections
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#" class="btn-ghost">Watch the process</a>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number"><span class="unique_span" id="count-rooms">0</span></div>
+          <div class="stat-label">Rooms transformed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">43<span>+</span></div>
+          <div class="stat-label">Artisan makers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">12<span>yr</span></div>
+          <div class="stat-label">In practice</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: collage -->
+    <div class="hero-right" id="heroRight">
+      <div class="collage" id="collage">
+
+        <div class="collage-img img-a ph-living">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Living room" loading="eager" onerror="this.style.display='none'"/>
+          <div class="img-tag">Study</div>
+        </div>
+
+        <div class="collage-img img-b ph-lamp">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Sofa detail" loading="eager" onerror="this.style.display='none'"/>
+          <div class="img-tag">Lounge</div>
+        </div>
+
+        <div class="collage-img img-c ph-shelf">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80" alt="Shelf" loading="eager" onerror="this.style.display='none'"/>
+          <div class="img-tag">Living Room</div>
+        </div>
+
+        <div class="collage-img img-d ph-chair">
+          <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=700&q=80" alt="Reading corner" loading="eager" onerror="this.style.display='none'"/>
+          <div class="img-tag">Guest Room</div>
+        </div>
+
+      </div>
+
+      <div class="vertical-label">Interior objects &amp; furniture</div>
+    </div>
+
+  </section>
+
+  <!-- SCROLL HINT -->
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+
+  <script>
+    // ── Parallax on mouse move ──
+    const right   = document.getElementById('heroRight');
+    const collage = document.getElementById('collage');
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+    const STRENGTH = 12;
+
+    document.addEventListener('mousemove', e => {
+      const cx = window.innerWidth  / 2;
+      const cy = window.innerHeight / 2;
+      targetX = (e.clientX - cx) / cx * STRENGTH;
+      targetY = (e.clientY - cy) / cy * STRENGTH;
+    });
+
+    function tick() {
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
+      collage.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    // ── Counter animation ──
+    function animateCount(el, target, duration) {
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const countEl = document.getElementById('count-rooms');
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        animateCount(countEl, 840, 1800);
+        observer.disconnect();
+      }
+    }, { threshold: 0.3 });
+    observer.observe(countEl);
+
+    // ── Nav fade on scroll ──
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.backdropFilter = window.scrollY > 20 ? 'blur(16px)' : 'none';
+      nav.style.background     = window.scrollY > 20 ? 'rgba(28,28,26,0.72)' : 'transparent';
+      nav.style.transition     = 'background 0.4s, backdrop-filter 0.4s';
+    });
+  </script>
+</body>
+</html>
